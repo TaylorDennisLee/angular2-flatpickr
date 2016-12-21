@@ -1,3 +1,3 @@
-export * from './flatpickr.module';
-export * from './flatpickr.component';
-export * from './models';
+export { FlatpickrModule } from './flatpickr.module';
+export { FlatpickrComponent } from './flatpickr.component';
+export { Flatpickr, FlatpickrOptions } from './models';

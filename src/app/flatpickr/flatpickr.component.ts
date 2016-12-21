@@ -1,6 +1,7 @@
 import { Component, forwardRef, AfterViewInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Flatpickr, FlatpickrOptions } from './models';
+
 const flatpickr = require('flatpickr');
 
 @Component({
@@ -28,11 +29,26 @@ export class FlatpickrComponent implements AfterViewInit, OnDestroy {
     @Input()
     disabled = false;
 
+    @Input()
+    required;
+
+    @Output()
+    ready = new EventEmitter<null>();
+
+    @Output()
+    opened = new EventEmitter<null>();
+
+    @Output()
+    closed = new EventEmitter<null>();
+
     @Output()
     dateChange = new EventEmitter<Date[]>();
 
     private flatpickr: Flatpickr;
     private flatpickrDefaultOptions = {
+        onReady: () => this.ready.emit(),
+        onOpen: () => this.opened.emit(),
+        onClose: () => this.closed.emit(),
         onChange: (selectedDates: Date[]) => this.onChange(selectedDates),
     };
 
@@ -41,7 +57,8 @@ export class FlatpickrComponent implements AfterViewInit, OnDestroy {
     constructor() { }
 
     ngAfterViewInit() {
-        this.initializeFlatpickr();
+        let options = Object.assign(this.flatpickrDefaultOptions, this.options);
+        this.flatpickr = this.flatpickrElement.nativeElement.flatpickr(options);
     }
 
     ngOnDestroy() {
@@ -70,10 +87,11 @@ export class FlatpickrComponent implements AfterViewInit, OnDestroy {
         this.flatpickr.close();
     }
 
-    private initializeFlatpickr() {
-        let options = Object.assign(this.flatpickrDefaultOptions, this.options);
-        this.flatpickr = this.flatpickrElement.nativeElement.flatpickr(options);
+    public parseDate(date: Date) {
+        return this.flatpickr.parseDate(date);
     }
+
+    ///////////////////////////////////////////
 
     private onChange(selectedDates: Date[]) {
         this.dateChange.emit(selectedDates);
