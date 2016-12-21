@@ -6,6 +6,7 @@
     "email": "alexander@ciesielski.co",
     "url": "http://ciesielski.co"
   },
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ciesielskico/angular2-flatpickr.git"
