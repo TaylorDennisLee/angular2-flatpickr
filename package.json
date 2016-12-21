@@ -28,7 +28,6 @@
     "e2e": "protractor",
     "build": "rm -rf dist && tsc -p src/app/flatpickr"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
