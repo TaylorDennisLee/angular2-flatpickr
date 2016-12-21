@@ -1,3 +1,36 @@
 <h1>
-  {{title}}
+    {{title}}
 </h1>
+
+<div>
+
+    <button (click)="flatpickr.clear()">Clear</button>
+    <button (click)="flatpickr.open()">Open</button>
+    <button (click)="flatpickr.close()">Close</button>
+    <button (click)="flatpickr.toggle()">Toggle</button>
+    <button (click)="setDate1ToDate2()">Set 1 to 2</button>
+</div>
+
+<div>
+
+    <cco-flatpickr #flatpickr placeholder="Test" [(date)]="myDate1">
+    </cco-flatpickr>
+
+    <p>
+        My date1: {{ myDate1 }}
+    </p>
+    <p>
+        My date1 | json: {{ myDate1 | json}}
+    </p>
+
+    <cco-flatpickr #flatpickr2 placeholder="Test" [(date)]="myDate2">
+    </cco-flatpickr>
+
+    <p>
+        My date2: {{ myDate2 }}
+    </p>
+    <p>
+        My date2 | json: {{ myDate2 | json}}
+    </p>
+
+</div>

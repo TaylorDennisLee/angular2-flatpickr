@@ -15,12 +15,15 @@
       "main": "main.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
-      "prefix": "app",
+      "prefix": "cco",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/flatpickr/dist/flatpickr.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+          "../node_modules/flatpickr/dist/flatpickr.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
