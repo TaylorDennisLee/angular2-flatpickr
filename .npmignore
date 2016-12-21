@@ -1,6 +1,11 @@
-examples
-node_modules
-src
-e2e
-.vscode
-dist
+/examples
+/node_modules
+/src
+/e2e
+/.vscode
+/dist
+angular-cli.json
+karma.conf.js
+protractor.conf.js
+tslint.json
+yarn.lock
